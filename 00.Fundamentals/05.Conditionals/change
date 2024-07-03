@@ -1,0 +1,48 @@
+price = float(input())
+payed = float(input())
+
+change = payed - price
+if change >= 1:
+    leva = change / 1
+    change = (change % 1)
+    print (f'{int(leva)} x 1 lev')
+
+if change >= 0.5:
+    st50 = change / 0.5
+    change = round((change % 0.5), 2)
+    print (f'{int(st50)} x 50 stotinki')
+
+if change >= 0.2:
+    st20 = change / 0.2
+    change = round((change % 0.2), 2)
+    print (f'{int(st20)} x 20 stotinki')
+
+if change >= 0.2:
+    st20 = change / 0.2
+    change = round((change % 0.2), 2)
+    print (f'{int(st20)} x 20 stotinki')
+
+if change >= 0.1:
+    st10 = change / 0.1
+    change = round((change % 0.1), 2)
+    print (f'{int(st10)} x 10 stotinki')
+
+if change >= 0.05:
+    st05 = change / 0.05
+    change = round((change % 0.05), 2)
+    print (f'{int(st05)} x 5 stotinki')
+
+if change >= 0.02:
+    st02 = change / 0.02
+    change = round((change % 0.02), 2)
+    print (f'{int(st02)} x 2 stotinki')
+
+if change >= 0.01:
+    st01 = change / 0.01
+    change = round((change % 0.01), 2)
+    print (f'{int(st01)} x 1 stotinka')
+    
+    
+    
+
+    
