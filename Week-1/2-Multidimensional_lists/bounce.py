@@ -15,6 +15,9 @@ clm = 0
 
 ttl = 0
 while True:
+    # if len_row == 0 or len_clm == 0:
+        # print(ttl += a[row][clm])
+        # break
     ttl += a[row][clm]
     if row == 0 or (prev_row < row and row != len_row):
         prev_row = row
