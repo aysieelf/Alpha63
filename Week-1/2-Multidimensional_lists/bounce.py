@@ -15,6 +15,19 @@ clm = 0
 
 ttl = 0
 while True:
+    ttl += a[row][clm]
+    if row == 0 or (prev_row < row and row != len_row):
+        prev_row = row
+        row += 1
+    elif row == len_row or (prev_row > row and row != 0):
+        prev_row = row
+        row -= 1
+    if clm == 0 or (prev_clm < clm and clm != len_clm):
+        prev_clm = clm
+        clm += 1
+    elif clm == len_clm or (prev_clm > clm and clm != 0):
+        prev_clm = clm
+        clm -= 1
     if ((row == 0 and clm == 0) or
             (row == 0 and clm == len_clm) or
             (row == len_row and clm == 0) or
@@ -22,17 +35,3 @@ while True:
         ttl += a[row][clm]
         print(ttl)
         break
-    else:
-        ttl += a[row][clm]
-        if row == 0 or (prev_row <= row and row != len_row):
-            prev_row = row
-            row += 1
-        elif row == len_row or (prev_row > row and row != 0):
-            prev_row = row
-            row -= 1
-        if clm == 0 or (prev_clm <= clm and clm != len_clm):
-            prev_clm = clm
-            clm += 1
-        elif clm == len_clm or (prev_clm > clm and clm != 0):
-            prev_clm = clm
-            clm -= 1
