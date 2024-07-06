@@ -30,7 +30,7 @@ def bounce(len_row, len_clm):
                 (row == len_row and clm == 0) or
                 (row == len_row and clm == len_clm)):
             ttl += a[row][clm]
-            return (ttl)
+            return ttl
 
 
 # read dimensions
