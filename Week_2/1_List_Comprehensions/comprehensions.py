@@ -40,5 +40,8 @@ lst = [
     ('penka', '1a2b3c4d'),
 ]
 
-strong = [pair for pair in lst if len(pair[1]) > 8 and True for i in pair[1] if i.isdigit()]
+strong = [pair for pair in lst if len(pair[1]) >= 8 and
+          any(i.isdigit() for i in pair[1]) and
+          any(i.islower() for i in pair[1]) and 
+          any(i.isupper() for i in pair[1])]
 print(strong)
