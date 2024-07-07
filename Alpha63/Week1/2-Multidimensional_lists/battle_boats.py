@@ -13,6 +13,8 @@ def set_board(r: int, c: int) -> list:
     return board
 
 
+print()
+
 def calculate_points(board: list) -> int:
     """
     Calculates the points for each player.
@@ -111,7 +113,7 @@ for i in range(rows):
     board_p1[i] = [int(x) for x in input().split()]
 
 # player 2 sets boats
-for j in range(rows - 1, -1, -1):
+for j in range(rows, 0, -1):
     temp_boats = [int(x) for x in input().split()]
     temp_boats.reverse()
     board_p2[j] = temp_boats

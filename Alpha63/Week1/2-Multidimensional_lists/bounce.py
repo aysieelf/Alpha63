@@ -1,0 +1,51 @@
+def bounce(len_row, len_clm, a):
+    prev_row = 0
+    prev_clm = 0
+    row = 0
+    clm = 0
+    ttl = 0
+
+    while True:
+        ttl += a[row][clm]
+
+        # update rows
+        if row == 0 or (prev_row < row and row != len_row):
+            prev_row = row
+            row += 1
+        elif row == len_row or (prev_row > row and row != 0):
+            prev_row = row
+            row -= 1
+
+        # update columns
+        if clm == 0 or (prev_clm < clm and clm != len_clm):
+            prev_clm = clm
+            clm += 1
+        elif clm == len_clm or (prev_clm > clm and clm != 0):
+            prev_clm = clm
+            clm -= 1
+
+        # check if it's a corner
+        if ((row == 0 and clm == 0) or
+                (row == 0 and clm == len_clm) or
+                (row == len_row and clm == 0) or
+                (row == len_row and clm == len_clm)):
+            ttl += a[row][clm]
+            return ttl
+
+
+# read dimensions
+n, m = input().split()
+n, m = int(n), int(m)
+
+# create a 2d list
+a = [[2**(i+j) for j in range(m)] for i in range(n)]
+
+len_row = len(a) - 1
+len_clm = len(a[0]) - 1
+
+# if there's nowhere to bounce to
+if m == 1 or n == 1:
+    print(a[0][0])
+else:
+    print(bounce(len_row, len_clm, a))
+
