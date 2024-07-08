@@ -10,12 +10,11 @@ print(new_lst)
 
 
 def is_prime(n):
-    if n == 1:
-        return False
-    for k in range(2, (n//2)+1):
-        if (n % k) == 0:
-            return False
-    return True
+    if n > 1:
+        for k in range(2, (n//2)+1):
+            if (n % k) == 0:
+                return False
+        return True
 
 
 lst2 = [1, 15, 2, 8, 31, 5, 9]
