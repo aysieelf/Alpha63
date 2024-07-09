@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 **/.idea/**/workspace.xml
 **/.idea/**/shelf/
+.DS_Store
+Week_2/.DS_Store
 
 # C extensions
 *.so
