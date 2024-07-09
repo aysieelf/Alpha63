@@ -53,6 +53,6 @@ print(strong_pass)
 
 import re
 
-regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$"
+regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
 result = [pair for pair in passwords if re.match(regex, pair[1])]
 print(result)
