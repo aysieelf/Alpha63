@@ -215,6 +215,7 @@ def replace_subtuple(sub_tuple, new_sub_tuple, the_tuple):
     for i in range(len(the_tuple) - len(sub_tuple) + 1):
         if sub_tuple == the_tuple[i:i + len(sub_tuple)]:
             index = i
+            break
     if index == -1:
         return the_tuple
     new_lst = the_tuple[:index] + new_sub_tuple + the_tuple[index + len(sub_tuple):]
