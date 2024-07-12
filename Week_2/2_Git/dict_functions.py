@@ -12,7 +12,12 @@ def from_string(the_string, *, pair_sep=',', kv_sep='=', value_type='str'):
         (dict) - The parsed dictionary
     """
     parsed_dict = {}
-    pairs = the_string.split(pair_sep)
+    if the_string == '':
+        return parsed_dict
+    elif the_string[0] == '=' or the_string[1] == '=':
+        raise ValueError
+    else:
+        pairs = the_string.split(pair_sep)
 
     for pair in pairs:
         key, value = pair.split(kv_sep)
