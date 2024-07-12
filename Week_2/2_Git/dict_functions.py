@@ -313,6 +313,7 @@ def dicts_symmetric_difference(first_dict, second_dict):
     return third_dict
 
 
+
 def dicts_difference(first_dict, second_dict):
     """
     Returns a new dictionary from keys in the first dictionary that are not present in the second dictionary.
