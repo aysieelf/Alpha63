@@ -1,41 +1,34 @@
-from dict_functions import from_string
+from dict_functions import aggregate_min
 import tuple_functions
+
 import unittest
 
 
-class TestFromString(unittest.TestCase):
-    def test_basic_parsing(self):
-        self.assertEqual(from_string('a=1,b=2,c=3'), {'a': '1', 'b': '2', 'c': '3'})
-        self.assertEqual(from_string('a=1,b=2,c=3', value_type='int'), {'a': 1, 'b': 2, 'c': 3})
-        self.assertEqual(from_string('a=1.0,b=2.0,c=3.0', value_type='float'), {'a': 1.0, 'b': 2.0, 'c': 3.0})
+class TestAggregateMinFunction(unittest.TestCase):
+    def test_basic_aggregation(self):
+        self.assertEqual(aggregate_min([('a', 1), ('b', 2), ('c', 3)]), {'a': 1, 'b': 2, 'c': 3})
+        self.assertEqual(aggregate_min([('a', 1), ('b', 2), ('a', 0)]), {'a': 0, 'b': 2})
 
     def test_empty_and_minimal_input(self):
-        self.assertEqual(from_string(''), {})
-        self.assertEqual(from_string('a=1'), {'a': '1'})
+        self.assertEqual(aggregate_min([]), {})
+        self.assertEqual(aggregate_min([('a', 1)]), {'a': 1})
 
-    def test_custom_separators(self):
-        self.assertEqual(from_string('a:1|b:2|c:3', pair_sep='|', kv_sep=':'), {'a': '1', 'b': '2', 'c': '3'})
-        self.assertEqual(from_string('key1:value1;key2:value2', pair_sep=';', kv_sep=':'), {'key1': 'value1', 'key2': 'value2'})
+    def test_mixed_data_types(self):
+        self.assertEqual(aggregate_min([('a', 1), ('b', 2.5), ('a', 0.5)]), {'a': 0.5, 'b': 2.5})
+        self.assertEqual(aggregate_min([('a', 1.0), ('b', 2), ('a', 0)]), {'a': 0, 'b': 2})
 
-    def test_type_conversion_edge_cases(self):
-        with self.assertRaises(ValueError):
-            from_string('a=abc', value_type='int')
-        with self.assertRaises(ValueError):
-            from_string('a=abc', value_type='float')
-
-    def test_missing_keys_or_values(self):
-        with self.assertRaises(ValueError):
-            from_string('=value')
-        with self.assertRaises(ValueError):
-            from_string('key=')
-
-    def test_whitespace_handling(self):
-        self.assertEqual(from_string(' a = 1 , b = 2 , c = 3 '), {' a ': ' 1 ', ' b ': ' 2 ', ' c ': ' 3 '})
-        self.assertEqual(from_string(' a = 1 , b = 2 , c = 3 ', value_type='int'), {' a ': 1, ' b ': 2, ' c ': 3})
+    def test_non_comparable_values(self):
+        with self.assertRaises(TypeError):
+            aggregate_min([('a', 'string'), ('a', 1)])
 
     def test_special_characters(self):
-        self.assertEqual(from_string('a@=1!,b@=2!,c@=3!', pair_sep=',', kv_sep='@='), {'a': '1!', 'b': '2!', 'c': '3!'})
-        self.assertEqual(from_string('key#1=value&1;key#2=value&2', pair_sep=';', kv_sep='#'), {'key#1': 'value&1', 'key#2': 'value&2'})
+        self.assertEqual(aggregate_min([('a$', 3), ('b@', 2), ('a$', 1)]), {'a$': 1, 'b@': 2})
+        self.assertEqual(aggregate_min([('key&', 4), ('key&', 2)]), {'key&': 2})
+
+    def test_negative_and_zero_values(self):
+        self.assertEqual(aggregate_min([('a', -1), ('b', 0), ('a', -3)]), {'a': -3, 'b': 0})
+        self.assertEqual(aggregate_min([('x', -5), ('y', -2), ('x', 0)]), {'x': -5, 'y': -2})
 
 if __name__ == '__main__':
     unittest.main()
+
