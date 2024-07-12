@@ -68,7 +68,6 @@ def sum_tuples(first_tuple, second_tuple):
     Returns:
         (tuple) - The resulting summed tuple
     """
-
     max_length = max(len(first_tuple), len(second_tuple))
     extended_tuple1 = list(first_tuple) + [0] * (max_length - len(first_tuple))
     extended_tuple2 = list(second_tuple) + [0] * (max_length - len(second_tuple))
