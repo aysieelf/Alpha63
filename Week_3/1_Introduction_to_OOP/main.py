@@ -1,16 +1,9 @@
-from product import Product
-from shopping_cart import ShoppingCart
+from forum_post import ForumPost
 
-cheese = Product('Cheese', 8.00)
-wine = Product('Wine', 12.50)
+post1 = ForumPost("Steven", "How to find use for every Microsoft product.", 2)
+post2 = ForumPost("Todor", "Alfa Romeo for sale. Preowned by Italian grandma", 300)
+post1.add_reply("I like Google!")
+post1.add_reply("Ugh, Microsoft... :(")
 
-cart = ShoppingCart()
-
-# we know that this method expects a 'Product'
-cart.add_product(cheese)
-cart.add_product(wine)
-cart.add_product(wine)
-
-# we know this method returns a 'float'
-total_price = cart.total_price() 
-print(total_price)
+print(post1.view())
+print(post2.view())

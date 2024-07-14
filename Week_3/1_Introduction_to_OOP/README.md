@@ -38,7 +38,8 @@ Alfa Romeo for sale. Preowned by Italian grandma / by Todor, 300 votes.
 ```
 ## 2. Initializer
 
-Freely assigning attributes to instances is valid python, but is dangerous, prone to errors, and does not scale beyond one file. Create an initializer that has the **responsibility to assign the required attributes**.
+Freely assigning attributes to instances is valid python, but is dangerous, prone to errors, and does not scale beyond one file. 
+Create an initializer that has the **responsibility to assign the required attributes**.
 - don't forget the `self` param!
   
 - `author` (str)
@@ -94,7 +95,8 @@ Alfa Romeo for sale. Preowned by Italian grandma / by Todor, 300 votes.
 ## 4. Replies
 
 Refactor your class to support a collection of replies: 
-You should create the collection as an empty list in the initializer. There is no need to accept the collection as an argument to the initializer method.
+You should create the collection as an empty list in the initializer. 
+There is no need to accept the collection as an argument to the initializer method.
 
 
 Methods:
