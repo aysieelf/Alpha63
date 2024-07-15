@@ -1,12 +1,14 @@
-class Product:
-    def __init__(self, name: str, price: float):
-        self.name = name
-        self.price = price
+def append(list):
+    list.append(1)
+
+list = [0]
+append(list)
+print(list)
 
 
-class ShoppingCart:
-    def __init__(self):
-        self.items: list[Product] = []
+def reassign(list):
+    list = [0, 1]
 
-    def add_product(self, product: Product):
-        pass
+list = [0]
+reassign(list)
+print(list)
