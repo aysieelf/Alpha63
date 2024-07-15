@@ -1,4 +1,4 @@
-class ForumPost():
+class ForumPost:
     def __init__(self, author: str, text: str, upvotes: int):
         self.author = author
         self.text = text
