@@ -1,5 +1,6 @@
 from datetime import date, timedelta
-from board_item import BoardItem, Board
+from board_item import BoardItem
+from board import Board
 
 
 def add_days_to_now(d):

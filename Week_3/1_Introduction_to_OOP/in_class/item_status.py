@@ -4,7 +4,7 @@ class ItemStatus:
     IN_PROGRESS = 'In progress'
     DONE = 'Done'
     VERIFIED = 'Verified'
-    item_status_list = [OPEN, TODO, IN_PROGRESS, DONE, VERIFIED]
+    item_status_list = (OPEN, TODO, IN_PROGRESS, DONE, VERIFIED)
 
     @classmethod
     def next(cls, current: str) -> str:
