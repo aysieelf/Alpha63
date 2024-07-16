@@ -19,4 +19,3 @@ class ItemStatus:
         if index - 1 < 0:
             return current
         return cls._item_status_list[index-1]
-
