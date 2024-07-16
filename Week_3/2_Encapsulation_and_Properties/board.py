@@ -17,3 +17,5 @@ class Board:
         if item in self._items:
             raise ValueError("Item already in the list")
         self._items.append(item)
+
+
