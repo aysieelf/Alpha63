@@ -5,12 +5,11 @@ from event_log import EventLog
 
 class BoardItem:
     def __init__(self, title: str, due_date: date):
-        self._initialised = False
         self.title = title
         self.due_date = due_date
         self._status: ItemStatus = ItemStatus.OPEN
-        self._event_logs: list[EventLog] = [EventLog(f'Item created: {self.info()}')]
-        self._initialised = True
+        self._event_logs: list[EventLog] = []
+        self.log_event(f'Item created: {self.info()}')
 
     @property
     def title(self):
@@ -22,8 +21,8 @@ class BoardItem:
             raise ValueError("Title can't be empty.")
         if len(value) < 5 or len(value) > 30:
             raise ValueError("Title should be between 5 and 30 characters inclusive.")
-        if self._initialised:
-            self._event_logs.append(EventLog(f"Title changed from {self.title} to {value}"))
+        if hasattr(self, "_title"):
+            self.log_event(f"Title changed from {self.title} to {value}")
         self._title = value
 
     @property
@@ -34,8 +33,8 @@ class BoardItem:
     def due_date(self, value: date):
         if value < date.today():
             raise ValueError("Due date can't be in the past.")
-        if self._initialised:
-            self._event_logs.append(EventLog(f"DueDate changed from {self.due_date} to {value}"))
+        if hasattr(self, "_date"):
+            self.log_event(f"DueDate changed from {self.due_date} to {value}")
         self._due_date = value
 
     @property
@@ -44,7 +43,7 @@ class BoardItem:
 
     @property
     def event_logs(self):
-        return self._event_logs
+        return list(self._event_logs)
 
     def revert_status(self) -> None:
         previous = self._status
@@ -73,5 +72,7 @@ class BoardItem:
             result += f'{event.info()}\n'
         return result
 
+    def log_event(self, description: str) -> None:
+        self._event_logs.append(EventLog(description))
 
 

@@ -3,7 +3,7 @@ from datetime import datetime
 
 class EventLog:
     def __init__(self, description: str):
-        self._description = self.valid_description(description)
+        self._description = self._valid_description(description)
         self._timestamp: datetime = datetime.now()
 
     @property
@@ -17,8 +17,7 @@ class EventLog:
     def info(self) -> str:
         return f"[{self._timestamp.strftime("%m/%d/%Y, %H:%M:%S")}] {self._description}"
 
-    @staticmethod
-    def valid_description(value: str):
+    def _valid_description(self, value: str):
         if not value:
             raise ValueError("Description can't be empty.")
         return value
