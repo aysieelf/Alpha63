@@ -1,0 +1,77 @@
+Task Description: Hotel Management System
+
+Overview
+You are tasked with creating a basic hotel management system in Python.
+The system should manage rooms, bookings, and maintain an event log for all actions.
+ The classes you need to define are Room, Booking, EventLog, and Hotel.
+
+1. Room Class
+Attributes:
+
+room_num (int): The unique identifier for the room.
+room_type (str): The type of the room (e.g., "Single", "Double", "Suite").
+price (float): The price per night for the room.
+is_booked (bool): Whether the room is currently booked or not.
+Methods:
+
+book_room(): Marks the room as booked.
+release_room(): Marks the room as available.
+__str__(): Returns a string representation of the room details.
+Constraints:
+
+Room number must be an integer.
+Room type must be one of: "Single", "Double", "Suite".
+Price must be a positive float.
+
+
+
+2. Booking Class
+Attributes:
+
+room (Room): The room that is being booked.
+guest_name (str): The name of the guest.
+check_in_date (datetime): The check-in date.
+check_out_date (datetime): The check-out date.
+Methods:
+
+__str__(): Returns a string representation of the booking details.
+Constraints:
+
+Dates must be datetime objects.
+Check-out date must be after the check-in date.
+Guest name must be a string and capitalized.
+3. EventLog Class
+Attributes:
+
+_event_list (list): A list of events.
+Methods:
+
+add_event(event): Adds an event to the log. Event must be a string.
+get_log(): Returns a copy of the event log.
+
+
+4. Hotel Class
+Attributes:
+
+name (str): The name of the hotel.
+capacity (int): The maximum number of rooms the hotel can accommodate.
+_rooms (list): A list of Room objects.
+_event_log (EventLog): An instance of the EventLog class.
+Methods:
+
+validate_name(name): Ensures the hotel name is a string.
+validate_capacity(capacity): Ensures the capacity is an integer.
+add_room(room): Adds a Room object to the hotel's list of rooms if it is under capacity.
+book_room(room_number, guest_name, check_in_date, check_out_date): Books a room if available, logs the event.
+release_room(room_number): Releases a booked room, logs the event.
+list_rooms(): Prints details of all rooms.
+list_available_rooms(): Prints details of available rooms.
+get_event_log(): Returns the event log.
+Test Script
+Create a test script (main.py) to verify that your classes work correctly. Your test script should:
+
+Create a Hotel instance with a name and capacity.
+Create and add some Room instances to the hotel.
+Test booking and releasing rooms.
+Print the list of all rooms and available rooms before and after booking.
+Print the event log to verify that events are being recorded correctly.

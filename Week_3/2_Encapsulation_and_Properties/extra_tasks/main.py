@@ -1,0 +1,54 @@
+from datetime import datetime
+from hotel import Hotel
+from room import Room
+
+# Create a hotel
+hotel = Hotel("Grand Hotel", 20)
+
+# Test hotel name and capacity
+print("Hotel Name:", hotel.name)
+print("Hotel Capacity:", hotel.capacity)
+
+# Create some rooms
+room1 = Room(101, "Single", 100.0)
+room2 = Room(102, "Double", 150.0)
+room3 = Room(103, "Suite", 250.0)
+
+# Add rooms to the hotel
+hotel.add_room(room1)
+hotel.add_room(room2)
+hotel.add_room(room3)
+#
+# List all rooms
+print("\nAll rooms in the hotel:")
+hotel.list_rooms()
+#
+# List available rooms before booking
+print("\nAvailable rooms before booking:")
+hotel.list_available_rooms()
+
+# Test booking a room
+try:
+    print(hotel.book_room(101, "John Doe", datetime(2024, 8, 1), datetime(2024, 8, 5)))
+    print(hotel.book_room(102, "Jane Smith", datetime(2024, 8, 3), datetime(2024, 8, 6)))
+except ValueError as e:
+    print(f"Error when booking a room: {str(e)}")
+
+# List available rooms after booking
+print("\nAvailable rooms after booking:")
+hotel.list_available_rooms()
+
+# Test releasing a room
+try:
+    print(hotel.release_room(101))
+except ValueError as e:
+    print(f"Error when releasing a room: {str(e)}")
+
+# List available rooms after releasing
+print("\nAvailable rooms after releasing:")
+hotel.list_available_rooms()
+
+# Print event log
+print("\nEvent Log:")
+for event in hotel.get_event_log():
+    print(event)
