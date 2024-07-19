@@ -5,34 +5,53 @@ from models.shopping_cart import ShoppingCart
 
 class ApplicationData:
     def __init__(self):
-        raise NotImplementedError()
+        self._products = []
+        self._categories = []
+        self._shopping_cart: ShoppingCart = ShoppingCart()
 
     @property
     def products(self):
-        raise NotImplementedError()
+        return tuple(self._products)
 
     @property
     def categories(self):
-        raise NotImplementedError()
+        return tuple(self._categories)
 
     @property
     def shopping_cart(self) -> ShoppingCart:
-        raise NotImplementedError()
-
-    def find_product_by_name(self, name) -> Product:
-        raise NotImplementedError()
-
-    def find_category_by_name(self, name) -> Category:
-        raise NotImplementedError()
-
-    def create_category(self, name) -> None:
-        raise NotImplementedError()
+        return self._shopping_cart
 
     def create_product(self, name, brand, price, gender) -> None:
-        raise NotImplementedError()
+        if self.product_exists(name):
+            raise ValueError("Product with the same name already exists.")
+        self._products.append(Product(name, brand, price, gender))
 
-    def category_exists(self, name) -> bool:
-        raise NotImplementedError()
+    def find_product_by_name(self, name: str) -> Product:
+        for product in self._products:
+            if name == product.name:
+                return product
+        raise ValueError("Product not found.")
 
     def product_exists(self, name) -> bool:
-        raise NotImplementedError()
+        for product in self._products:
+            if name == product.name:
+                return True
+        return False
+
+    def create_category(self, name: str) -> None:
+        if self.category_exists(name):
+            raise ValueError("Category with the same name already exists.")
+        self._categories.append(Category(name))
+
+    def find_category_by_name(self, name) -> Category:
+        for category in self._categories:
+            if name == category.name:
+                return category
+        raise ValueError("Category not found.")
+
+    def category_exists(self, name) -> bool:
+        for category in self._categories:
+            if name == category.name:
+                return True
+        return False
+
