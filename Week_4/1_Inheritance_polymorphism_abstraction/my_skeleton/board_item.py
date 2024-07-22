@@ -4,10 +4,10 @@ from event_log import EventLog
 
 
 class BoardItem:
-    def __init__(self, title: str, due_date: date):
+    def __init__(self, title: str, due_date: date, item_status=ItemStatus.OPEN):
         self.title = title
         self.due_date = due_date
-        self._status: ItemStatus = ItemStatus.OPEN
+        self._status: ItemStatus = item_status
         self._event_logs: list[EventLog] = [EventLog(f'Item created: {self.info()}')]
 
     @property
@@ -16,10 +16,11 @@ class BoardItem:
 
     @title.setter
     def title(self, value: str):
-        if not value:
-            raise ValueError("Title can't be empty.")
-        if len(value) < 5 or len(value) > 30:
-            raise ValueError("Title should be between 5 and 30 characters inclusive.")
+        self.validate_length(value, 5, 30, "Title")
+        # if not value:
+        #     raise ValueError("Title can't be empty.")
+        # if len(value) < 5 or len(value) > 30:
+        #     raise ValueError("Title should be between 5 and 30 characters inclusive.")
         if hasattr(self, "_title"):
             self._event_logs.append(EventLog(f"Title changed from {self.title} to {value}"))
         self._title = value
@@ -70,6 +71,14 @@ class BoardItem:
         for event in self.event_logs:
             result += f'{event.info()}\n'
         return result
+
+    def validate_length(self, value, min_num_incl, max_num_incl, param_name: str):
+        if not value:
+            raise ValueError(f"{param_name} can't be empty.")
+        if len(value) < min_num_incl or len(value) > max_num_incl:
+            raise ValueError(f"{param_name} should be between {min_num_incl} and {max_num_incl} characters inclusive.")
+
+
 
 
 

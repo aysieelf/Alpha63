@@ -3,25 +3,15 @@ from board_item import BoardItem
 from item_status import ItemStatus
 from board import Board
 from event_log import EventLog
+from task import Task
 
 
 def add_days_to_now(d):
     return date.today() + timedelta(days=d)
 
-item = BoardItem('Refactor this mess', add_days_to_now(2))
-item.due_date += timedelta(days=365 * 2)  # two years in the future
-item.title = 'Not that important'
-item.revert_status()
-item.advance_status()
-item.revert_status()
-print(item.history())
 
-print('\n--------------\n')
-
-anotherItem = BoardItem('Dont refactor anything',  add_days_to_now(2))
-anotherItem.advance_status()
-anotherItem.advance_status()
-anotherItem.advance_status()
-anotherItem.advance_status()
-anotherItem.advance_status()
-print(anotherItem.history())
+task = Task('Test the application flow', 'Steven', add_days_to_now(2))
+print(task.title)      # Test the application flow
+print(task.due_date)   # 2022-03-18
+print(task.status)
+print(task.assignee)
