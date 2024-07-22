@@ -1,32 +1,33 @@
 from models.product import Product
 
+
 class Category:
     def __init__(self, name: str):
         self.name = name
         self._products: list[Product] = []
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: str) -> None:
         if len(value) < 2 or len(value) > 15:
-            raise ValueError("Name’s length must be between 3 and 15 symbols.")
+            raise ValueError("Name’s length must be between 2 and 15 symbols.")
         self._name = value
 
     @property
-    def products(self):
+    def products(self) -> tuple:
         return tuple(self._products)
 
     def add_product(self, product: Product) -> None:
-        if product in self._products:
+        if product in self.products:
             raise ValueError(f"{product.name} already in category.")
         self._products.append(product)
 
     def remove_product(self, product: Product) -> None:
-        if product not in self._products:
-            raise ValueError(f"Product is not found in {self._name} category.")
+        if product not in self.products:
+            raise ValueError(f"Product {product.name} is not found in {self._name} category.")
         self._products.remove(product)
 
     def to_string(self) -> str:

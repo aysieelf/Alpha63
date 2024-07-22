@@ -3,6 +3,7 @@ def validate_params_count(params, count):
         raise ValueError(
             f'Invalid number of arguments. Expected: {count}; received: {len(params)}.")')
 
+
 def try_parse_float(float_string):
     try:
         return float(float_string)

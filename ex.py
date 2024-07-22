@@ -1,14 +1,10 @@
-def append(list):
-    list.append(1)
+def outer():
+    count = 0
+    def inner():
+        nonlocal count
+        count += 1
+        print(count)
+    inner()
+    inner()
 
-list = [0]
-append(list)
-print(list)
-
-
-def reassign(list):
-    list = [0, 1]
-
-list = [0]
-reassign(list)
-print(list)
+outer()
