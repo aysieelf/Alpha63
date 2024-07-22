@@ -5,12 +5,9 @@ from event_log import EventLog
 
 
 class Task(BoardItem):
-    def __init__(self, title: str, assignee: str, due_date: date ):
+    def __init__(self, title: str, assignee: str, due_date: date):
         self.assignee = assignee
         super().__init__(title, due_date, ItemStatus.TODO)
-        self._history = []
-        self._log_event(f'Task created: {super().info()}')
-        
 
     @property
     def assignee(self):

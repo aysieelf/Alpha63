@@ -9,7 +9,7 @@ class BoardItem:
         self.due_date = due_date
         self._status = status
         self._history = []
-        self._log_event(f'Item created: {self.info()}')
+        self._log_event(self._init_class_log())
 
     @property
     def status(self):
@@ -71,3 +71,7 @@ class BoardItem:
     def _ensure_valid_due_date(self, due_date):
         if due_date < date.today():
             raise ValueError('Due date cant be in the past.')
+
+    def _init_class_log(self):
+        class_name = "Item" if self.__class__.__name__ == "BoardItem" else self.__class__.__name__
+        return f'{class_name} created: {self.title}, [{self.status} | {self.due_date}]'
