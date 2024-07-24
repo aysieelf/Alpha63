@@ -1,13 +1,13 @@
 from datetime import datetime
 
 
-class EventLog():
+class EventLog:
     _format = '%m/%d/%Y, %H:%M:%S'
 
     def __init__(self, description: str):
         if not description or description.isspace():
             raise ValueError('Description cant be empty')
-            
+
         self._description = description
         self._timestamp = datetime.now()
 
