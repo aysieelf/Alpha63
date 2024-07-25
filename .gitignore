@@ -163,3 +163,70 @@ cython_debug/
 
 # Игнорираме iml файлове
 *.iml
+
+# Ignore .venv directories
+**/.venv/
+
+# Ignore specific files in Workshops/Workshop1
+Workshops/Workshop1/.venv/bin/activate*
+Workshops/Workshop1/.venv/bin/pip*
+Workshops/Workshop1/.venv/bin/flask
+Workshops/Workshop1/.venv/bin/python*
+Workshops/Workshop1/.venv/bin/atm
+
+# Ignore .idea directories and their contents
+**/.idea/
+
+# Ignore specific XML files
+**/misc.xml
+**/modules.xml
+**/profiles_settings.xml
+**/vcs.xml
+**/workspace.xml
+
+# Ignore .iml files
+**/*.iml
+/Workshops/Workshop1/.venv/.gitignore
+/Workshops/Workshop1/.venv/.gitignore
+/Workshops/Workshop1/skeleton/.idea/.gitignore
+/Workshops/Workshop1/.venv/bin/activate
+/Workshops/Workshop1/.venv/bin/activate.csh
+/Workshops/Workshop1/.venv/bin/activate.fish
+/Workshops/Workshop1/.venv/bin/activate.nu
+/Workshops/Workshop1/.venv/bin/activate.ps1
+/Workshops/Workshop1/.venv/bin/activate_this.py
+/Workshops/Workshop1/.venv/bin/atm
+/Workshops/Workshop1/.venv/bin/flask
+/Workshops/Workshop1/.idea/misc.xml
+/Workshops/Workshop1/skeleton/.idea/misc.xml
+/Workshops/Workshop1/.idea/modules.xml
+/Workshops/Workshop1/skeleton/.idea/modules.xml
+/Workshops/Workshop1/.venv/bin/pip
+/Workshops/Workshop1/.venv/bin/pip3
+/Workshops/Workshop1/.venv/bin/pip3.12
+/Workshops/Workshop1/.venv/bin/pip-3.12
+/Workshops/Workshop1/.idea/inspectionProfiles/profiles_settings.xml
+/Workshops/Workshop1/skeleton/.idea/inspectionProfiles/profiles_settings.xml
+/Workshops/Workshop1/.venv/bin/python
+/Workshops/Workshop1/.venv/bin/python3
+/Workshops/Workshop1/.venv/bin/python3.12
+/Workshops/Workshop1/.venv/pyvenv.cfg
+/Workshops/Workshop2/skeleton/.vscode/settings.json
+/Workshops/Workshop1/skeleton/.idea/skeleton.iml
+/Workshops/Workshop1/.idea/vcs.xml
+/Workshops/Workshop1/skeleton/.idea/vcs.xml
+/Workshops/Workshop1/.idea/Workshop1.iml
+/Workshops/Workshop1/.idea/workspace.xml
+/Workshops/Workshop1/.venv/bin/flask
+/Workshops/Workshop1/.venv/bin/atm
+/Workshops/Workshop1/.venv/bin/activate.fish
+/Workshops/Workshop1/.venv/.gitignore
+/Workshops/Workshop1/skeleton/.idea/.gitignore
+/Workshops/Workshop1/.venv/bin/activate
+/Workshops/Workshop1/.venv/bin/activate.csh
+/Workshops/Workshop1/.venv/bin/activate.fish
+/Workshops/Workshop1/.venv/bin/activate.nu
+/Workshops/Workshop1/.venv/bin/activate.ps1
+/Workshops/Workshop1/.venv/bin/activate_this.py
+/Workshops/Workshop1/.venv/bin/atm
+/Workshops/Workshop1/.venv/bin/flask
