@@ -1,8 +1,13 @@
+from board.board import Board
 from board_items.board_item import BoardItem
 
 
 class CanAddItem:
+
+    # the same function as in Board
     def add_item(self, item: BoardItem):
-        if item in self._items:
-            raise ValueError(f"Item with title {item.title} already exists.")
-        self._items.append(item)
+        Board.add_item(item)
+
+
+
+

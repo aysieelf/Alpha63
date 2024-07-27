@@ -10,6 +10,7 @@ from board_items.item_status import ItemStatus
 
 def add_days_to_now(d):
     return date.today() + timedelta(days=d)
+
 #
 # board = Board()
 # steven = board.add_user("Steven", "steven@asd.bg")
@@ -46,7 +47,7 @@ def add_days_to_now(d):
 # readonly_board = ReadonlyBoard()
 # steven = readonly_board.add_user("Steven", "steven@asd.bg")
 # task = Task("Don't refactor anything", steven, add_days_to_now(2))
-# #
+#
 # readonly_board.add_item(issue)  # method from CanAddItem
 # readonly_board.add_item(task)
 # print(readonly_board.count)  # 2     # property from Board

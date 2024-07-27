@@ -1,7 +1,6 @@
 from __future__ import annotations
 from board_items.task import Task  # importing class
 from board_items.item_status import ItemStatus
-from board.board import Board
 
 
 class User:
@@ -39,8 +38,8 @@ class User:
         return capacity
 
     def valid_username(self, value: str) -> str:
-        if Board.username_exists(value):
-            raise ValueError(f"Username {value} already exists!")
+        if value == '':
+            raise ValueError("Username should not be an empty string")
 
         return value
 
@@ -49,7 +48,7 @@ class User:
             raise ValueError(f"Task {task.title} is not assigned to {self.username}!")
         task.advance_status()
 
-    def receive_task(self, task: Task):  # removed type annotation Task
+    def receive_task(self, task: Task):
         if self.capacity <= 0:
             raise ValueError(f"User {self.username} can't receive any more tasks!")
         if self._task_exists(task):
@@ -62,7 +61,7 @@ class User:
             raise ValueError(f"Task {task.title} is not assigned to {self.username}!")
         self._assigned_tasks.remove(task)
 
-    def _task_exists(self, task: Task): # removed type annotation Task
+    def _task_exists(self, task: Task):  # removed type annotation Task
         return any(t.title == task.title for t in self.assigned_tasks)
 
     def __str__(self):
