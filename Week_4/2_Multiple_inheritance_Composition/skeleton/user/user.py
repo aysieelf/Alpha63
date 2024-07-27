@@ -38,7 +38,6 @@ class User:
 
         return capacity
 
-    @staticmethod
     def valid_username(self, value: str) -> str:
         if Board.username_exists(value):
             raise ValueError(f"Username {value} already exists!")

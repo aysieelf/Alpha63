@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import board_items.task
 from board_items.board_item import BoardItem
 from user import user
