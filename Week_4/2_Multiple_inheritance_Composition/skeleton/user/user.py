@@ -1,5 +1,5 @@
 from __future__ import annotations
-import board_items.task
+from board_items.task import Task  # importing class
 from board_items.item_status import ItemStatus
 from board.board import Board
 
@@ -10,7 +10,7 @@ class User:
     def __init__(self, username: str, email: str):
         self._username = self.valid_username(username)
         self.email = email
-        self._assigned_tasks: list[board_items.task.Task] = []
+        self._assigned_tasks: list[Task] = []
 
     @property
     def username(self) -> str:
@@ -38,18 +38,19 @@ class User:
 
         return capacity
 
+    @staticmethod
     def valid_username(self, value: str) -> str:
         if Board.username_exists(value):
             raise ValueError(f"Username {value} already exists!")
-        Board._usernames.append(value)
+
         return value
 
-    def advance_task_status(self, task: board_items.task.Task) -> None:
+    def advance_task_status(self, task: Task) -> None:  # removed type annotation Task
         if not self._task_exists(task):
             raise ValueError(f"Task {task.title} is not assigned to {self.username}!")
         task.advance_status()
 
-    def receive_task(self, task: board_items.task.Task):
+    def receive_task(self, task: Task):  # removed type annotation Task
         if self.capacity <= 0:
             raise ValueError(f"User {self.username} can't receive any more tasks!")
         if self._task_exists(task):
@@ -57,12 +58,12 @@ class User:
         task.assignee = self
         self._assigned_tasks.append(task)
 
-    def remove_task(self, task: board_items.task.Task):
+    def remove_task(self, task: Task):  # removed type annotation Task
         if not self._task_exists(task):
             raise ValueError(f"Task {task.title} is not assigned to {self.username}!")
         self._assigned_tasks.remove(task)
 
-    def _task_exists(self, task: board_items.task.Task):
+    def _task_exists(self, task: Task): # removed type annotation Task
         return any(t.title == task.title for t in self.assigned_tasks)
 
     def __str__(self):

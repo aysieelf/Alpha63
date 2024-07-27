@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import board_items.task
 from board_items.board_item import BoardItem
-import user.user
+from user import user
 
 
 class Board:
@@ -10,7 +10,7 @@ class Board:
 
     def __init__(self):
         self._items: list[BoardItem] = []
-        self._users: list[user.user.User] = []
+        self._users: list[user.User] = []
 
     def add_item(self, item: BoardItem):
         if item in self._items:
@@ -31,11 +31,12 @@ class Board:
         return sum(u.capacity for u in self._users)
 
     def add_user(self, username: str, email: str):
-        u = user.user.User(username, email)
+        u = user.User(username, email)
         self._users.append(u)
+        Board._usernames.append(username)
         return u
 
-    def reassign_task(self, task: board_items.task.Task, new_assignee: user.user.User):
+    def reassign_task(self, task: board_items.task.Task, new_assignee: user.User):
         for current_assignee in self._users:
             if task in current_assignee.assigned_tasks:
                 if current_assignee.username == new_assignee.username:
