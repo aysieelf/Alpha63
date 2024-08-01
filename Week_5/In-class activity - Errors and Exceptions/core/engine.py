@@ -9,12 +9,14 @@ class Engine:
     def start(self):
         output = []
         while True:
-            # Todo: implement error handling
-            input_line = input()
-            if input_line.lower() == 'exit':
-                break
+            try:
+                input_line = input()
+                if input_line.lower() == 'exit':
+                    break
 
-            command = self._command_factory.create(input_line)
-            output.append(command.execute())
+                command = self._command_factory.create(input_line)
+                output.append(command.execute())
+            except ValueError as err:
+                output.append(str(err))
 
         print('\n'.join(output))

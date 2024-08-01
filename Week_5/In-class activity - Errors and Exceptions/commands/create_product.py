@@ -1,13 +1,13 @@
 from core.application_data import ApplicationData
 from models.gender import Gender
-from commands.validation_helpers import try_parse_float
+from commands.validation_helpers import try_parse_float, validate_params_count
 
 
 class CreateProductCommand:
 
     def __init__(self, params: list[str], app_data: ApplicationData):
         # Todo validate params
-        self._params = params
+        self._params = validate_params_count(params, self.__class__.__name__, 4)
         self._app_data = app_data
 
     def execute(self):

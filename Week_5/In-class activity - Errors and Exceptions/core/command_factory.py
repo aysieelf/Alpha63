@@ -21,5 +21,7 @@ class CommandFactory:
             return ShowCategoryCommand(params, self._app_data)
         if cmd.lower() == "addproducttocategory":
             return AddToCategoryCommand(params, self._app_data)
+        
+        raise ValueError(f'Command {cmd} is not supported.')
 
         # Todo: validate command

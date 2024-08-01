@@ -1,11 +1,12 @@
 from core.application_data import ApplicationData
+from commands.validation_helpers import validate_params_count
 
 
 class AddToCategoryCommand:
 
     def __init__(self, params: list[str], app_data: ApplicationData):
         # Todo validate params
-        self._params = params
+        self._params = validate_params_count(params, self.__class__.__name__, 2)
         self._app_data = app_data
 
     def execute(self):

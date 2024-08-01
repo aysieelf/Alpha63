@@ -17,12 +17,16 @@ class ApplicationData:
         return tuple(self._categories)
 
     def find_product_by_name(self, name: str) -> Product:
-        # Todo: Find product by name. Raise ValueError if no such product
-        raise NotImplementedError
+        for pr in self._products:
+            if pr.name == name:
+                return pr
+        raise ValueError(f'Product {name} does not exist.')
 
     def find_category_by_name(self, name: str) -> Category:
-        # Todo: Find category by name. Raise ValueError if no such category
-        raise NotImplementedError
+        for cat in self._categories:
+            if cat.name == name:
+                return cat
+        raise ValueError(f'Category {name} does not exist.')
 
     def create_category(self, name: str) -> None:
         if self.category_exists(name):
