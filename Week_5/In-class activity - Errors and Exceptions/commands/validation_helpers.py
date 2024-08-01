@@ -4,6 +4,7 @@ def try_parse_float(float_string: str, msg: str):
     except:
         raise ValueError(msg)
 
+
 def valid_str_len(value: str,
                   min_num: int,
                   max_num: int,
@@ -14,8 +15,10 @@ def valid_str_len(value: str,
 
     return value
 
+
 def validate_params_count(params, class_name, count):
     if len(params) != count:
         raise ValueError(
             f'{class_name[:-7]} command expecte {count} parameters.')
+
     return params

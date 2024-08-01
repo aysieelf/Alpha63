@@ -1,8 +1,6 @@
 from commands.add_to_category import AddToCategoryCommand
-
 from commands.create_category import CreateCategoryCommand
 from commands.create_product import CreateProductCommand
-
 from commands.show_category import ShowCategoryCommand
 
 
@@ -23,5 +21,3 @@ class CommandFactory:
             return AddToCategoryCommand(params, self._app_data)
         
         raise ValueError(f'Command {cmd} is not supported.')
-
-        # Todo: validate command

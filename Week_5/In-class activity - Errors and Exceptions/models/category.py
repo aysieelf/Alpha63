@@ -10,28 +10,32 @@ class Category:
     def __init__(self,
                  name: str) -> None:
 
-        self.name = valid_str_len(name,
-                                  Category.NAME_LEN_MIN_NUM,
-                                  Category.NAME_LEN_MAX_NUM,
-                                  Category.NAME_LEN_ERR)
+        self._name = valid_str_len(name,
+                                   Category.NAME_LEN_MIN_NUM,
+                                   Category.NAME_LEN_MAX_NUM,
+                                   Category.NAME_LEN_ERR)
+
         self._products: list[Product] = []
 
+    @property
+    def name(self) -> str:
+        return self._name
 
     @property
-    def products(self):
+    def products(self) -> tuple:
         return tuple(self._products)
 
-    def add_product(self, product: Product):
-        if not product in self._products:
-            self._products.append(product)
-        else:
+    def add_product(self, product: Product) -> None:
+        if product in self._products:
             raise ValueError(f'Product {product.name} already exists!')
 
-    def remove_product(self, product: Product):
-        if product in self._products:
-            self._products.remove(product)
-        else:
+        self._products.append(product)
+
+    def remove_product(self, product: Product) -> None:
+        if product not in self._products:
             raise ValueError(f'Product {product.name} does not exists!')
+
+        self._products.remove(product)
 
     def to_string(self):
         new_line = '\n'

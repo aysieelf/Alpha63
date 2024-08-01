@@ -8,6 +8,7 @@ class Engine:
 
     def start(self):
         output = []
+
         while True:
             try:
                 input_line = input()
@@ -16,6 +17,7 @@ class Engine:
 
                 command = self._command_factory.create(input_line)
                 output.append(command.execute())
+
             except ValueError as err:
                 output.append(str(err))
 

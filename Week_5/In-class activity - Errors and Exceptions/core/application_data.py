@@ -20,12 +20,14 @@ class ApplicationData:
         for pr in self._products:
             if pr.name == name:
                 return pr
+
         raise ValueError(f'Product {name} does not exist.')
 
     def find_category_by_name(self, name: str) -> Category:
         for cat in self._categories:
             if cat.name == name:
                 return cat
+
         raise ValueError(f'Category {name} does not exist.')
 
     def create_category(self, name: str) -> None:
