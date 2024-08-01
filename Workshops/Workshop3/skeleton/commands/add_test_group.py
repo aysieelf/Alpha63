@@ -10,14 +10,14 @@ class AddTestGroup(BaseCommand):
     @classmethod
     def get_next_id(cls):
         cls._id += 1
-        return cls._id + 1
+        return cls._id
 
     def __init__(self,
                  params: list[str],
                  app_data: ApplicationData):
         validate_params_count(params, 1)
         super().__init__(params, app_data)
-        AddTestGroup._id += 1
+
         self.id = AddTestGroup.get_next_id()
 
     def execute(self) -> str:

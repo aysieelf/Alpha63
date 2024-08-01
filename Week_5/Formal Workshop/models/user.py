@@ -115,9 +115,7 @@ class User:
 
     @property
     def is_admin(self) -> bool:
-        if self.user_role == UserRole.ADMIN:
-            return True
-        return False
+        return self.user_role == UserRole.ADMIN
 
     @property
     def vehicles(self) -> tuple:

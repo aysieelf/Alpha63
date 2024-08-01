@@ -35,3 +35,4 @@ class Motorcycle(Vehicle):
         return (f'{super().__str__()}\n'
                 f'Category: {self.category}\n'
                 f'{self.comments_str()}')
+

@@ -22,7 +22,7 @@ class ApplicationData:
 
     def find_user_by_username(self, username: str) -> User:
         filtered = [user for user in self._users if user.username == username]
-        if filtered == []:
+        if not filtered:
             raise ValueError(f'There is no user with username {username}!')
 
         return filtered[0]

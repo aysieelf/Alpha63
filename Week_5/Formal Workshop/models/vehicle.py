@@ -91,13 +91,6 @@ class Vehicle:
 
         self._comments.remove(comment)
 
-    def __eq__(self, other):
-
-        return (self.make == other.make and
-                self.model == other.model and
-                self.wheels == other.wheels and
-                self.price == other.price)
-
     def comments_str(self):
         comments = "--NO COMMENTS--"
         if self._comments:

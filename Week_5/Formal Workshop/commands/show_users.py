@@ -22,9 +22,9 @@ class ShowUsersCommand(BaseCommand):
         return (f"--USERS--\n"
                 f"{all_users}")
 
-
     def _requires_login(self) -> bool:
         return True
 
     def _expected_params_count(self) -> int:
         return 0
+

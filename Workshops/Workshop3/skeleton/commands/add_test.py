@@ -10,7 +10,7 @@ class AddTest(BaseCommand):
     @classmethod
     def get_next_id(cls):
         cls._id += 1
-        return cls._id + 1
+        return cls._id
 
     def __init__(self,
                  params: list[str],
