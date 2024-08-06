@@ -2,11 +2,7 @@ import unittest
 
 from models.gender import Gender
 from models.product import Product
-
-VALID_PRODUCT_NAME = "test name"
-VALID_PRODUCT_BRAND = "test brand"
-VALID_PRODUCT_PRICE = 4.5
-VALID_PRODUCT_GENDER = Gender.UNISEX
+from tests.valid_values import VALID_PRODUCT_NAME, VALID_PRODUCT_BRAND, VALID_PRODUCT_PRICE, VALID_PRODUCT_GENDER
 
 
 class Product_Should(unittest.TestCase):
@@ -41,10 +37,36 @@ class Product_Should(unittest.TestCase):
         with self.assertRaises(ValueError):
             Product(VALID_PRODUCT_NAME, VALID_PRODUCT_BRAND, -1, VALID_PRODUCT_GENDER)
 
-    # def test_initGenderRaisesValueError_invalidGender(self):
-    #     with self.assertRaises(ValueError):
-    #         Product(VALID_PRODUCT_NAME, VALID_PRODUCT_BRAND, VALID_PRODUCT_PRICE, 'asd')
-
-    def test_setterSetsCorrectly_validName(self):
+    def test_setterSetsCorrectlyName_validName(self):
         self.product.name = "new name"
         self.assertEqual("new name", self.product.name)
+
+    def test_setterSetsCorrectlyBrand_validBrand(self):
+        self.product.brand = "new brand"
+        self.assertEqual("new brand", self.product.brand)
+
+    def test_setterSetsCorrectlyPrice_validPrice(self):
+        self.product.price = 3.4
+        self.assertEqual(3.4, self.product.price)
+
+    def test_setterRaisesValueError_invalidName(self):
+        with self.assertRaises(ValueError):
+            self.product.name = "new name new name"
+
+    def test_setterRaisesValueError_invalidBrand(self):
+        with self.assertRaises(ValueError):
+            self.product.brand = "new brand new brand"
+
+    def test_setterRaisesValueError_invalidPrice(self):
+        with self.assertRaises(ValueError):
+            self.product.price = -9
+
+    def test_toStringReturnsValidOutput(self):
+        expected = '\n'.join([
+            f' #{self.product.name} {self.product.brand}',
+            f' #Price: ${self.product.price:.2f}',
+            f' #Gender: {self.product.gender.value}',
+            ' ==='
+        ])
+
+        self.assertEqual(expected, self.product.to_string())
